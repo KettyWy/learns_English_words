@@ -31,11 +31,14 @@ def del_value(value):
 def find_word(word):
     with open('DictOfEnglW.txt', 'r', encoding='utf-8') as f_obj:
         data = f_obj.readlines()
-        for el in data:
-            if el.split(':').count(word) > 0:
-                return ' - '.join(el.strip().split(':')[1:])
-            # else:
-            #     return f'Нет такого слова.'
+        try:
+            data = list(filter(lambda line: word in line, data))[0]
+            return ' - '.join(data.strip().split(':')[1:])
+        except IndexError:
+            return f'Нет такого слова.'
+        # for el in data:
+        #     if el.split(':').count(word) > 0:
+        #         return ' - '.join(el.strip().split(':')[1:])
 
 
 def get_translate(user_word):
