@@ -98,9 +98,9 @@ def choice_time():
         time.sleep(tictac)
 
 
-if __name__ == '__main__':
-    # main()
-    # choice_time()
-    # add_value()
-    # del_value('kb')
-    print(find_word('word'))
+# if __name__ == '__main__':
+#     # main()
+#     # choice_time()
+#     # add_value()
+#     # del_value('kb')
+#     print(find_word('word'))
