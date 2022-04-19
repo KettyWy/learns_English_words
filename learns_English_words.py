@@ -1,5 +1,16 @@
 import time
 import random
+import os
+
+
+if not os.path.exists('base.db'):
+    from models import *
+    db.start()
+    Users.create_table()
+    Users.create(chat_id=0)
+    Words.create_table()
+    db.stop()
+
 
 words = []
 weights = []

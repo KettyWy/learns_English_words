@@ -4,3 +4,7 @@ venv
 DictOfEnglW.txt
 DictGeneral.py
 Game.py
+*.db*
+.env
+__pycache__
+docker-compose.yml

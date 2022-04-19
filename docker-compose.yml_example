@@ -1,0 +1,20 @@
+version: '3'
+services:
+  bot:
+    image: python:3.8
+    container_name: word_bot
+    volumes:
+      - .:/prog
+    command:
+      - sh -c "cd /prog/ && pip install -r requirements.txt && python3 tg.py"
+    environment:
+      - TOKEN: insert is your tg-token here
+    restart: always
+  sheduler:
+    image: python:3.8
+    container_name: word_sheduler
+    volumes:
+      - .:/prog
+    command:
+      - sh -c "cd /prog/ && pip install -r requirements.txt && python3 tg_sheduler.py"
+    restart: always
