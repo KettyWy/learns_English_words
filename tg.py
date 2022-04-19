@@ -211,8 +211,4 @@ def reply_message(message):
 
 
 if __name__ == '__main__':
-    if not os.path.exists('base.db'):
-        db.start()
-        Users.create_table()
-        Words.create_table()
     bot.infinity_polling()
