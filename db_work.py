@@ -3,14 +3,6 @@ import os
 from models import *
 
 
-if not os.path.exists('base.db'):
-    db.start()
-    Users.create_table()
-    Words.create_table()
-    Users.create(chat_id=0)
-    db.stop()
-
-
 def create_user(chat_id):
     row = Users(chat_id=chat_id)
     return row.save()
@@ -66,3 +58,12 @@ def get_all_words_for_user(user_id):
 
 def get_all_active_users():
     return Users.select().where(Users.chat_id > 0, Users.sleep != 0)
+
+
+if __name__ == '__main__':
+    if not os.path.exists('base.db'):
+        db.start()
+        Users.create_table()
+        Words.create_table()
+        Users.create(chat_id=0)
+        db.stop()
