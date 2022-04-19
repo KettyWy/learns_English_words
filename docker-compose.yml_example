@@ -6,7 +6,7 @@ services:
     volumes:
       - .:/prog
     working_dir: /prog
-    command: sh -c "cd /prog/ && pip install -r requirements.txt && python3 models.py && python3 tg.py"
+    command: sh -c "cd /prog/ && python3 db_work.py && pip install -r requirements.txt && python3 tg.py"
     environment:
       - TOKEN=insert is your tg-token here
     restart: always
