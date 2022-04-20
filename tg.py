@@ -23,14 +23,17 @@ def _delete_word(message):
 
 def _add_word(message):
     user = get_user(message.chat.id)
-    text = []
+    texts = []
     if '\n' in message.text:
-        text = message.text.split('\n')
+        texts = message.text.split('\n')
     else:
-        text.append(message.text)
+        texts.append(message.text)
     try:
-        for word in text:
-            word, translate, transcript = word.split('*')
+        for text in texts:
+            if not text:
+                continue
+
+            word, translate, transcript = text.split('*')
             if not word or not translate:
                 raise ValueError
 
