@@ -14,6 +14,8 @@ class Users(BaseModel):
     sleep = IntegerField(default=0)
     send_at = TimestampField(default=0)
     answer_at = TimestampField(default=0)
+    mode = IntegerField(default=1)
+    options_num = IntegerField(default=4)
 
 
 class Words(BaseModel):

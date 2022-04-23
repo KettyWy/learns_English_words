@@ -2,8 +2,7 @@ import os
 from datetime import datetime
 from time import sleep
 from db_work import get_all_active_users, update_user
-from tg import bot, _get_word, _get_inline_markup
-
+from tg import command_get_word
 
 if __name__ == '__main__':
     while not os.path.exists('base.db'):
@@ -21,14 +20,7 @@ if __name__ == '__main__':
                         (now() - user.answer_at).total_seconds() > user.sleep * 60
                     ):
 
-                buttons = {}
-                word, translations, transcript = _get_word(user)
-                for translate in translations:
-                    buttons[translate] = f'{word}={translate}'
-                markup = _get_inline_markup(buttons)
-                bot.send_message(user.chat_id,
-                                 f'Как переводится слово <b>{word}{f" ({transcript})" if transcript else ""}</b>?',
-                                 reply_markup=markup)
+                command_get_word(user=user)
                 update_user(user.id, **{'send_at': now(), 'answer_at': 0})
 
         sleep(1)

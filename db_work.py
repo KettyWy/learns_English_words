@@ -21,7 +21,7 @@ def update_user(user_id, **kwarg):
 
 def get_word(user_id, word):
     try:
-        return Words.select().where(Words.user_id == user_id, Words.word == word).get()
+        return Words.select().where(Words.user_id == user_id, (Words.word == word) | (Words.translate == word)).get()
     except DoesNotExist:
         return False
 
