@@ -7,8 +7,6 @@ services:
       - .:/prog
     working_dir: /prog
     command: sh -c "cd /prog/ && pip install -r requirements.txt && python3 db_work.py && python3 tg.py"
-    environment:
-      - TOKEN=insert is your tg-token here
     restart: always
   scheduler:
     image: python:3.8
@@ -17,6 +15,4 @@ services:
       - .:/prog
     working_dir: /prog
     command: sh -c "cd /prog/ && pip install -r requirements.txt && python3 tg_scheduler.py"
-    environment:
-      - TOKEN=insert is your tg-token here
     restart: always
