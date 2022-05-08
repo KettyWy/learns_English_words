@@ -1,0 +1,25 @@
+name: CD
+on:
+  push:
+    branches: [ integrate_tg ]
+#  pull_request:
+#    branches: [ master ]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Delivering to the server
+        uses: appleboy/ssh-action@master
+        with:
+          host: mmkk.host
+          username: root
+          key: ${{ secrets.SSH_KEY }}
+          port: 22
+          script: |
+            cd /apps/learns_English_words/
+            git pull origin integrate_tg
+            docker-compose down
+            docker-compose up -d
