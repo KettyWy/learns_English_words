@@ -221,6 +221,7 @@ def command_start(message):
     user = get_user(message.chat.id)
     if not user:
         create_user(message.chat.id)
+        bot.send_message(ADMIN_CHAT_ID, 'New user')
     bot.send_message(message.chat.id, """
 Привет, друг!
 Меня зовут Вордик, я помогу тебе выучить слова.
