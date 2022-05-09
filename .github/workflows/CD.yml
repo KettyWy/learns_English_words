@@ -1,9 +1,11 @@
 name: CD
-on: workflow_dispatch
+on:
 #  push:
 #    branches: [ integrate_tg ]
 #  pull_request:
 #    branches: [ master ]
+
+  workflow_dispatch:
 
 jobs:
   build:
