@@ -1,7 +1,7 @@
 name: CD
 on:
-  push:
-    branches: [ integrate_tg ]
+#  push:
+#    branches: [ integrate_tg ]
 #  pull_request:
 #    branches: [ master ]
 
